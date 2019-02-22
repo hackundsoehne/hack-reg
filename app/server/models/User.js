@@ -32,6 +32,13 @@ var profile = {
     }
   },
 
+  experience: {
+    type: String,
+    enum: {
+      values: 'S M L'.split(' '),
+    }
+  },
+
   description: {
     type: String,
     min: 0,
@@ -52,6 +59,26 @@ var profile = {
     }
   },
 
+  gender: {
+    type: String,
+    enum : {
+      values: 'M F O N'.split(' ')
+    }
+  },
+
+  major: {
+    type: String,
+  },
+
+  resume: {
+    type: String,
+  },
+
+  github: {
+    type: String,
+  },
+
+
 };
 
 // Only after confirmed
@@ -67,11 +94,8 @@ var confirmation = {
   wantsHardware: Boolean,
   hardware: String,
 
-  major: String,
-  github: String,
   twitter: String,
   website: String,
-  resume: String,
 
   needsReimbursement: Boolean,
   address: {

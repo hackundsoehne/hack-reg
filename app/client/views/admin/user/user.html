@@ -133,7 +133,32 @@
         </textarea>
       </div>
 
-      <div class="field" ng-hide="isMitStudent">
+      <div ng-show="selectedUser.profile.experience === 'M' || selectedUser.profile.experience === 'L'" style="margin-top: 18px">
+
+          <div class="field">
+            <label> Major </label>
+            <input type="text" name="study"
+              ng-model="selectedUser.profile.major">
+          </div>
+
+          <div class="field">
+            <label> Github </label>
+            <input type="text" name="github"
+              ng-model="selectedUser.profile.github">
+          </div>
+
+          <div class="field">
+            <label> Skill Sheet </label>
+            <p>
+              Upload a document outlining any skills or experience you'd like to share (ex. resume). PDF preferred!
+            </p>
+            <a target="_blank" href="https://go.hackmit.org/skill-sheets" class="ui pink button">
+              Upload
+            </a>
+          </div>
+        </div>
+
+      <div class="field" style="margin-top: 18px">
         <p>
           Because of limitations regarding event hosting in Germany, we are not legally allowed to host minors (those
           under 18) for Hacktival 2019 without extra documents.

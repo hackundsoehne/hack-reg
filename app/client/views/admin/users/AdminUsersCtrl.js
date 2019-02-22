@@ -284,12 +284,21 @@ angular.module('reg')
                 name: 'Graduation Year',
                 value: user.profile.graduationYear
               },{
+                name: 'Experience',
+                value: user.profile.experience
+              },{
                 name: 'Description',
                 value: user.profile.description
               },{
                 name: 'Essay',
                 value: user.profile.essay
-              }
+              },{
+                name: 'Major',
+                value: user.profile.major
+              },{
+                name: 'Github',
+                value: user.profile.github
+              },
             ]
           },{
             name: 'Confirmation',
@@ -303,12 +312,6 @@ angular.module('reg')
               },{
                 name: 'Shirt Size',
                 value: user.confirmation.shirtSize
-              },{
-                name: 'Major',
-                value: user.confirmation.major
-              },{
-                name: 'Github',
-                value: user.confirmation.github
               },{
                 name: 'Website',
                 value: user.confirmation.website

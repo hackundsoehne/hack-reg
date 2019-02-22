@@ -30,6 +30,7 @@ angular.module('reg')
 
       $scope.regIsClosed = Date.now() > settings.data.timeClose;
 
+
       /**
        * TODO: JANK WARNING
        */
@@ -132,6 +133,15 @@ angular.module('reg')
                 {
                   type: 'empty',
                   prompt: 'Please select your graduation year.'
+                }
+              ]
+            },
+            experience: {
+              identifier: 'experience',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please specify how experienced you are.'
                 }
               ]
             },
