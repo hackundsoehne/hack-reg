@@ -17,15 +17,15 @@ angular.module('reg')
       $scope.user = currentUser.data;
 
       // Is the student from MIT?
-      $scope.isMitStudent = $scope.user.email.split('@')[1] == 'mit.edu';
+      // $scope.isMitStudent = $scope.user.email.split('@')[1] == 'mit.edu';
 
       // If so, default them to adult: true
-      if ($scope.isMitStudent){
-        $scope.user.profile.adult = true;
-      }
+      // if ($scope.isMitStudent){
+      //   $scope.user.profile.adult = true;
+      // }
 
       // Populate the school dropdown
-      populateSchools();
+      // populateSchools();
       _setupForm();
 
       $scope.regIsClosed = Date.now() > settings.data.timeClose;
@@ -33,42 +33,42 @@ angular.module('reg')
       /**
        * TODO: JANK WARNING
        */
-      function populateSchools(){
-        $http
-          .get('/assets/schools.json')
-          .then(function(res){
-            var schools = res.data;
-            var email = $scope.user.email.split('@')[1];
+      // function populateSchools(){
+      //   $http
+      //     .get('/assets/schools.json')
+      //     .then(function(res){
+      //       var schools = res.data;
+      //       var email = $scope.user.email.split('@')[1];
 
-            if (schools[email]){
-              $scope.user.profile.school = schools[email].school;
-              $scope.autoFilledSchool = true;
-            }
-          });
+      //       // if (schools[email]){
+      //       //   $scope.user.profile.school = schools[email].school;
+      //       //   $scope.autoFilledSchool = true;
+      //       // }
+      //     });
 
-        $http
-          .get('/assets/schools.csv')
-          .then(function(res){
-            $scope.schools = res.data.split('\n');
-            $scope.schools.push('Other');
+      //   $http
+      //     .get('/assets/schools.csv')
+      //     .then(function(res){
+      //       $scope.schools = res.data.split('\n');
+      //       $scope.schools.push('Other');
 
-            var content = [];
+      //       var content = [];
 
-            for(i = 0; i < $scope.schools.length; i++) {
-              $scope.schools[i] = $scope.schools[i].trim();
-              content.push({title: $scope.schools[i]})
-            }
+      //       for(i = 0; i < $scope.schools.length; i++) {
+      //         $scope.schools[i] = $scope.schools[i].trim();
+      //         content.push({title: $scope.schools[i]})
+      //       }
 
-            $('#school.ui.search')
-              .search({
-                source: content,
-                cache: true,
-                onSelect: function(result, response) {
-                  $scope.user.profile.school = result.title.trim();
-                }
-              })
-          });
-      }
+      //       $('#school.ui.search')
+      //         .search({
+      //           source: content,
+      //           cache: true,
+      //           onSelect: function(result, response) {
+      //             $scope.user.profile.school = result.title.trim();
+      //           }
+      //         })
+      //     });
+      // }
 
       function _updateUser(e){
         UserService
@@ -149,7 +149,7 @@ angular.module('reg')
               rules: [
                 {
                   type: 'allowMinors',
-                  prompt: 'You must be an adult, or an MIT student.'
+                  prompt: 'You must be an adult.'
                 }
               ]
             }

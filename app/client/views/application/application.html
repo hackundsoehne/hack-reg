@@ -5,113 +5,134 @@
 
   <div class="ui stackable page grid">
     <div class="column">
-      <div class="ui form"
-            ng-class="{'loading': loading}">
+      <div class="ui form" ng-class="{'loading': loading}">
 
         <div class="divided title">Basic Information</div>
 
         <fieldset ng-disabled="regIsClosed">
 
-        <div class="field">
-          <label> Email </label>
-          <input type="email"
-                 name="email"
-                 disabled="disabled"
-                 ng-model="user.email">
-        </div>
+          <div class="field">
+            <label> Email </label>
+            <input type="email" name="email" disabled="disabled" ng-model="user.email">
+          </div>
 
-        <div class="field">
-          <label> Full Name </label>
-          <input type="text"
-                 name="name"
-                 ng-model="user.profile.name">
-        </div>
+          <div class="field">
+            <label> Full Name </label>
+            <input type="text" name="name" ng-model="user.profile.name">
+          </div>
 
-        <div class="field" ng-show="autoFilledSchool">
+          <!-- <div class="field" ng-show="autoFilledSchool">
           <label> School </label>
           <input class="ui input"
                  disabled="disabled"
                  ng-show="autoFilledSchool"
                  ng-model="user.profile.school">
-        </div>
+        </div> -->
 
-        <div class="field" ng-show="!autoFilledSchool">
-          <label> School </label>
-          <div id="school" class="ui search">
-            <div class="ui input">
-              <input class="prompt" type="text" placeholder="School" name="school" ng-model="user.profile.school">                
+          <div class="field">
+            <label> School </label>
+            <div id="school" class="ui search">
+              <div class="ui input">
+                <input class="prompt" type="text" placeholder="School" name="school" ng-model="user.profile.school">
+              </div>
+              <div class="results"></div>
             </div>
-            <div class="results"></div>
           </div>
-        </div>
 
-        <div class="field">
-          <label>Graduation Year</label>
-          <select
-            name="year"
-            ng-model="user.profile.graduationYear">
-            <option value="">Graduation Year</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-          </select>
-        </div>
+          <div class="field">
+            <label>Graduation Year</label>
+            <select name="year" ng-model="user.profile.graduationYear">
+              <option value="">Graduation Year</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="Graduated">I have already graduated</option>
+            </select>
+          </div>
 
-        <div class="field">
-          <label>Gender</label>
-          <select
-            name="gender"
-            ng-model="user.profile.gender">
-            <option value="">Gender</option>
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-            <option value="O">Other</option>
-            <option value="N">I prefer not to answer.</option>
-          </select>
-        </div>
+          <div class="field">
+            <label>Gender</label>
+            <select name="gender" ng-model="user.profile.gender">
+              <option value="">Gender</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+              <option value="O">Other</option>
+              <option value="N">I prefer not to answer.</option>
+            </select>
+          </div>
 
-        <div class="field">
-          <label>I would describe myself as a...</label>
-          <input type="text"
-                 placeholder="Designer, Data Scientist, iOS Wizard, Hacker Extraordinaire"
-                 ng-model="user.profile.description">
-        </div>
+          <div class="field">
+            <label>I would describe myself as a...</label>
+            <input type="text" placeholder="Designer, Data Scientist, iOS Wizard, Hacker Extraordinaire"
+              ng-model="user.profile.description">
+          </div>
 
-        <div class="field">
-          <label>
-              What would you like to learn or get out of HackMIT? (optional)
-          </label>
-          <textarea ng-model="user.profile.essay">
+          <div class="field">
+            <label>
+              What would you like to learn or get out of Hacktival? (optional)
+            </label>
+            <p>
+              While this field is <strong>optional</strong>, we strongly recommend applicants, especially those who are
+              not as experienced and therefore don't have a resume / github link
+              / website link to share (under 'Skills and Accomplishments'), to give a proper answer here. By no means do we only accept super
+              experienced applicants, but this information greatly helps our team with
+              the applicant selection process!
+            </p>
+            <textarea ng-model="user.profile.essay">
           </textarea>
-        </div>
-
-        <div class="field"
-             ng-hide="isMitStudent">
-          <p>
-            Because of limitations imposed by MIT, we are not legally allowed to host
-            non-MIT minors (those under 18) for HackMIT 2015. Checking the box below affirms that you are or will be 18 years or older by September 19th, 2015.
-          </p>
-          <p>
-            <strong>
-            We will be checking ID. If you are a non-MIT minor, you will be turned away at the door.
-            </strong>
-          </p>
-          <div class="ui checkbox">
-            <input type="checkbox" id="adult" ng-model="user.profile.adult">
-            <label for="adult">I am 18 or older.</label>
           </div>
-        </div>
 
-        <br>
+          <div class="divided title" style="margin-top: 48px"> Skills & Accomplishments </div>
 
-        <div class="field" ng-hide="regIsClosed">
-          <button type="submit"
-                  class="fluid ui purple button"
-                  ng-click="submitForm()">
-            Submit
-          </button>
-        </div>
+          <div class="field">
+            <label> What are you studying? </label>
+            <input type="text" name="study" placeholder="Computer Science, Product Design, Basket Weaving, etc."
+              ng-model="user.confirmation.major">
+          </div>
+
+          <div class="field">
+            <label> Github </label>
+            <input type="text" name="github" placeholder="https://github.com/foobar"
+              ng-model="user.confirmation.github">
+          </div>
+
+          <div class="field">
+            <label> Skill Sheet </label>
+            <p>
+              Upload a document outlining any skills or experience you'd like to share (ex. resume). PDF preferred!
+            </p>
+            <a target="_blank" href="https://go.hackmit.org/skill-sheets" class="ui pink button">
+              Upload
+            </a>
+          </div>
+
+          <div class="field" ng-hide="isMitStudent" style="margin-top: 48px">
+            <p>
+              Because of limitations regarding event hosting in Germany, we are not legally allowed to host minors
+              (those under 18) for Hacktival 2019 without extra documents.
+              Checking the box below affirms that you are or will be 18 years or older by May 11th, 2019.
+              Otherwise refer to our support <a href="mailto:info@hackundsoehne.de">email</a> for more information.
+            </p>
+            <p>
+              <strong>
+                We will be checking ID. If you are a minor (without any prior mention and extra documents), you will be
+                turned away at the door.
+              </strong>
+            </p>
+            <div class="ui checkbox">
+              <input type="checkbox" id="adult" ng-model="user.profile.adult">
+              <label for="adult">I am 18 or older.</label>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="field" ng-hide="regIsClosed">
+            <button type="submit" class="fluid ui purple button" ng-click="submitForm()">
+              Submit
+            </button>
+          </div>
 
         </fieldset>
       </div>
