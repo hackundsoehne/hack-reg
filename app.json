@@ -16,25 +16,25 @@
         },
         "ADMIN_EMAIL": {
             "description": "Credentials for the admin user created at app initialization",
-            "value": "admin@example.com"
+            "value": "vader@hackundsoehne.de"
         },
-        "ADMIN_PASS": "party",
+        "ADMIN_PASS": "Hacktival2019!",
         "EMAIL_ADDRESS": {
             "description": "The email address that is included in the 'email us' link at the bottom of emails.",
-            "value": "team@example.com"
+            "value": "application@hackundsoehne.de"
         },
-        "HACKATHON_NAME": "Hackathon",
+        "HACKATHON_NAME": "Hacktival",
         "TWITTER_HANDLE": {
             "description": "Everything after https://twitter.com/",
-            "value": "hackathon"
+            "value": "hackundsoehne"
         },
         "FACEBOOK_HANDLE": {
             "description": "Everything after https://facebook.com/",
-            "value": "hackathon"
+            "value": "hackundsoehne"
         },
         "EMAIL_CONTACT": {
             "description": "Used to send verification, registration, and confirmation emails",
-            "value": "Hackathon Team <team@example.com>"
+            "value": "Hackathon Application <application@hackundsoehne.de>"
         },
         "EMAIL_HOST": "smtp.gmail.com",
         "EMAIL_USER": "foo@bar.com",
