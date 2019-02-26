@@ -19,17 +19,26 @@ var profile = {
     default: false,
   },
 
-  school: {
-    type: String,
-    min: 1,
-    max: 150,
+  isStudent: {
+    type: Boolean,
+    required: true,
+    default: false,
   },
 
-  graduationYear: {
+  school: {
     type: String,
-    enum: {
-      values: '2016 2017 2018 2019'.split(' '),
-    }
+  },
+
+  major: {
+    type: String,
+  },
+
+  work: {
+    type: String,
+  },
+
+  location: {
+    type: String,
   },
 
   experience: {
@@ -59,17 +68,6 @@ var profile = {
     }
   },
 
-  gender: {
-    type: String,
-    enum : {
-      values: 'M F O N'.split(' ')
-    }
-  },
-
-  major: {
-    type: String,
-  },
-
   resume: {
     type: String,
   },
@@ -83,42 +81,33 @@ var profile = {
 
 // Only after confirmed
 var confirmation = {
-  phoneNumber: String,
   dietaryRestrictions: [String],
   shirtSize: {
     type: String,
     enum: {
-      values: 'XS S M L XL XXL WXS WS WM WL WXL WXXL'.split(' ')
+      values: 'XS S M L XL'.split(' ')
     }
   },
-  wantsHardware: Boolean,
-  hardware: String,
+  // wantsHardware: Boolean,
+  // hardware: String,
 
   twitter: String,
   website: String,
 
-  needsReimbursement: Boolean,
-  address: {
-    name: String,
-    line1: String,
-    line2: String,
-    city: String,
-    state: String,
-    zip: String,
-    country: String
-  },
-  receipt: String,
-
-  hostNeededFri: Boolean,
-  hostNeededSat: Boolean,
-  genderNeutral: Boolean,
-  catFriendly: Boolean,
-  smokingFriendly: Boolean,
-  hostNotes: String,
+  // needsReimbursement: Boolean,
+  // address: {
+  //   name: String,
+  //   line1: String,
+  //   line2: String,
+  //   city: String,
+  //   state: String,
+  //   zip: String,
+  //   country: String
+  // },
+  // receipt: String,
 
   notes: String,
 
-  signatureLiability: String,
   signaturePhotoRelease: String,
   signatureCodeOfConduct: String,
 };
@@ -356,8 +345,7 @@ schema.statics.validateProfile = function(profile, cb){
   return cb(!(
     profile.name.length > 0 &&
     profile.adult &&
-    profile.school.length > 0 &&
-    ['2016', '2017', '2018', '2019'].indexOf(profile.graduationYear) > -1 &&
+    profile.school.length > 0 && 
     ['M', 'F', 'O', 'N'].indexOf(profile.gender) > -1
     ));
 };

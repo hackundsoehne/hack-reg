@@ -114,6 +114,7 @@ angular.module('reg')
               $state.go("app.dashboard");
             });
           }, response => {
+            console.log($scope.user.profile);
             swal("Uh oh!", "Something went wrong.", "error");
           });
       }
@@ -161,15 +162,6 @@ angular.module('reg')
                 {
                   type: 'empty',
                   prompt: 'Please enter your school name.'
-                }
-              ]
-            },
-            year: {
-              identifier: 'year',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please select your graduation year.'
                 }
               ]
             },

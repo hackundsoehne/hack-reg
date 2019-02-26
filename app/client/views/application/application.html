@@ -28,8 +28,16 @@
                  ng-show="autoFilledSchool"
                  ng-model="user.profile.school">
         </div> -->
-
+          
           <div class="field">
+            <label> Are you a student? </label>
+            <div class="ui checkbox">
+              <input type="checkbox" name="isStudent" id="isStudent" ng-model="user.profile.isStudent">
+              <label for="isStudent">I am a student</label>
+            </div>
+          </div>
+
+          <div class="field" ng-show="user.profile.isStudent">
             <label> School </label>
             <div id="school" class="ui search">
               <div class="ui input">
@@ -39,16 +47,20 @@
             </div>
           </div>
 
+          <div class="field" ng-show="user.profile.isStudent">
+            <label> What are you studying? </label>
+            <input type="text" name="study" placeholder="Computer Science, Product Design, Basket Weaving, etc."
+              ng-model="user.profile.major">
+          </div>
+    
+          <div class="field" ng-show="!user.profile.isStudent">
+            <label> Work </label>
+            <input class="ui input" name="work" placeholder="Job" ng-model="user.profile.work">
+          </div>
+    
           <div class="field">
-            <label>Graduation Year</label>
-            <select name="year" ng-model="user.profile.graduationYear">
-              <option value="">Graduation Year</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-              <option value="Graduated">I have already graduated</option>
-            </select>
+            <label> Where are you from? </label>
+            <input class="ui input" name="location" placeholder="City, Country" ng-model="user.profile.location">
           </div>
 
           <div class="field">
@@ -96,12 +108,6 @@
 
           <div ng-show="user.profile.experience === 'M' || user.profile.experience === 'L'">
             <div class="divided title" style="margin-top: 48px"> Skills & Accomplishments </div>
-
-            <div class="field">
-              <label> What are you studying? </label>
-              <input type="text" name="study" placeholder="Computer Science, Product Design, Basket Weaving, etc."
-                ng-model="user.profile.major">
-            </div>
 
             <div class="field">
               <label> Github </label>
