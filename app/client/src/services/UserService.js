@@ -34,6 +34,14 @@ angular.module('reg')
         );
       },
 
+      uploadFile: function(id, file) {
+        return $http.post(base + id + '/file', {
+          file: file
+        }, {
+          'encoding' : null 
+        });
+      },
+
       updateProfile: function(id, profile){
         return $http.put(base + id + '/profile', {
           profile: profile

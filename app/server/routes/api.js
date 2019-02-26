@@ -2,6 +2,9 @@ var UserController = require('../controllers/UserController');
 var SettingsController = require('../controllers/SettingsController');
 
 var request = require('request');
+fs = require('fs');
+url = require('url');
+path = require('path');
 
 module.exports = function(router) {
 
@@ -115,6 +118,8 @@ module.exports = function(router) {
   // Users
   // ---------------------------------------------
 
+
+
   /**
    * [ADMIN ONLY]
    *
@@ -161,6 +166,43 @@ module.exports = function(router) {
     var id = req.params.id;
 
     UserController.updateProfileById(id, profile , defaultResponse(req, res));
+  });
+
+  /** 
+   * [OWNER/ADMIN]
+   * 
+   * POST - a file
+  */
+  router.post('/users/:id/file', isOwnerOrAdmin, function(req, res) {
+    // Get Token of requesting user
+    var token = getToken(req);
+
+    // Get user profile based on token
+    UserController.getByToken(token, function(err, user){
+
+      if (err || !user) {
+        return res.status(500).send(err);
+      }
+
+      // Remove whitespaces and use full name as id
+      var fileid = user.profile.name.replace(/\s/g, "").toLowerCase();
+
+      // Write to project root
+      filePath = path.join(__dirname, "../../../", '/uploads/' + fileid + '.pdf');
+      try {
+        var pdfBase64 = req.body.file.split(';base64,').pop()
+        fs.writeFileSync(filePath, pdfBase64, {'encoding' : 'base64'});
+        res.status(200).send({
+          path: filePath
+        })
+      } catch (e) {
+        console.log(e)
+        res.status(400).send(e);
+      }
+      
+      req.on('end', function (){
+      });
+    })
   });
 
   /**

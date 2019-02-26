@@ -1,6 +1,8 @@
 const angular = require("angular");
 const swal = require("sweetalert");
 
+var path = require('path');
+
 angular.module('reg')
   .controller('ApplicationCtrl', [
     '$scope',
@@ -71,6 +73,39 @@ angular.module('reg')
       //     });
       // }
 
+      $scope.uploadFile = function() {
+        var f = document.getElementById('file').files[0],
+            r = new FileReader();
+        
+        r.onloadend = function(e) {
+          // Only allow pdf uploads
+          if (f.name.split(".").pop() != "pdf") {
+            swal("Only PDFs are allowed", "Upload a .pdf file instead");
+            return;
+          }
+          if(f.size > 10000000) {
+            swal("File to large", "upload a smaller version of your pdf");
+            return;
+          }
+
+          var data = e.target.result; 
+          // Put Http Request to new router endpoint here
+          UserService.uploadFile(Session.getUserId(), data).then(response => {
+            swal("Awesome!", "Your file has been uploaded", "success");
+            
+            var fileid = $scope.user.profile.name.replace(/\s/g, "").toLowerCase();
+            var filePath = path.join(__dirname, "../../../..", '/uploads/' + fileid + '.pdf');
+            $scope.user.profile.filepath = filePath;
+
+          }, err => {
+            swal("Something went wrong", err.data);
+          });
+        }
+    
+        r.readAsDataURL(f);
+    }
+    
+
       function _updateUser(e){
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
@@ -98,6 +133,8 @@ angular.module('reg')
         }
         return true;
       }
+
+
 
       function _setupForm(){
         // Custom minors validation rule
