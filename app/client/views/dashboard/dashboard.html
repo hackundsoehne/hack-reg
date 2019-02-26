@@ -107,20 +107,20 @@
           <p>
             {{ DASHBOARD.SUBMITTED }}
           </p>
-          <div class="ui purple button"
+          <div class="ui grey button"
                ui-sref="app.application">
             Edit your application
           </div>
 
           <div
-            class="ui pink button"
+            class="ui grey button"
             ng-show="!user.teamCode"
             ui-sref="app.team">
             Create or join a team
           </div>
 
           <div
-            class="ui pink button"
+            class="ui grey button"
             ng-show="user.teamCode"
             ui-sref="app.team">
             View your Team
