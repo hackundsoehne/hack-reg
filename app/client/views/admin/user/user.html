@@ -88,20 +88,33 @@
       </div> -->
 
       <div class="field">
+        <label> Are you a student? </label>
+        <div class="ui checkbox">
+          <input type="checkbox" name="isStudent" id="isStudent" ng-model="selectedUser.profile.isStudent">
+          <label for="isStudent">I am a student</label>
+        </div>
+      </div>
+
+      <div class="field" ng-show="selectedUser.profile.isStudent">
         <label> School </label>
         <input class="ui input" name="school" ng-model="selectedUser.profile.school">
       </div>
 
-      <div class="field">
-        <label>Graduation Year</label>
-        <select name="year" ng-model="selectedUser.profile.graduationYear">
-          <option value="2019">2019</option>
-          <option value="2020">2020</option>
-          <option value="2021">2021</option>
-          <option value="2022">2022</option>
-          <option value="Graduated">I have already graduated</option>
-        </select>
+      <div class="field" ng-show="selectedUser.profile.isStudent">
+        <label> Major </label>
+        <input class="ui input" name="school" ng-model="selectedUser.profile.major">
       </div>
+
+      <div class="field" ng-show="!selectedUser.profile.isStudent">
+        <label> Work </label>
+        <input class="ui input" name="school" ng-model="selectedUser.profile.work">
+      </div>
+
+      <div class="field">
+        <label> Where are you from? </label>
+        <input class="ui input" name="school" ng-model="selectedUser.profile.location">
+      </div>
+
 
       <div class="field">
         <label>Gender</label>
@@ -198,11 +211,6 @@
       </div>
 
       <div class="field">
-        <label> Phone </label>
-        <input type="tel" ng-model="selectedUser.confirmation.phoneNumber" />
-      </div>
-
-      <div class="field">
         <label> Dietary Restrictions </label>
         <input type="text" ng-model="selectedUser.confirmation.dietaryRestrictions" />
       </div>
@@ -234,77 +242,7 @@
 
       <div class="ui divider"></div>
 
-      <div class="field">
-        <label>
-          Needs Hardware
-        </label>
-        <div class="ui checkbox">
-          <input type="checkbox" ng-model="selectedUser.confirmation.wantsHardware">
-          <label> Yup, I need hardware </label>
-        </div>
-      </div>
-
-      <div class="field">
-        <label>
-          Hardware
-        </label>
-        <input type="text" ng-model="selectedUser.confirmation.hardware">
-      </div>
-
-      <div class="ui divider"></div>
-
-      <div class="ui header">
-        Hosting
-      </div>
-
-      <div class="field">
-        <strong> Needs Hosting Friday </strong>
-        <i ng-if="selectedUser.confirmation.hostNeededFri" class="green check circle icon">
-        </i>
-        <i ng-if="!selectedUser.confirmation.hostNeededFri" class="red remove circle icon">
-        </i>
-      </div>
-
-      <div class="field">
-        <strong> Needs Hosting Saturday </strong>
-        <i ng-if="selectedUser.confirmation.hostNeededSat" class="green check circle icon">
-        </i>
-        <i ng-if="!selectedUser.confirmation.hostNeededSat" class="red remove circle icon">
-        </i>
-      </div>
-
-      <div class="field">
-        <strong> Gender Neutral </strong>
-        <i ng-if="selectedUser.confirmation.genderNeutral" class="green check circle icon">
-        </i>
-        <i ng-if="!selectedUser.confirmation.genderNeutral" class="red remove circle icon">
-        </i>
-      </div>
-
-      <div class="field">
-        <strong> Cat Friendly </strong>
-        <i ng-if="selectedUser.confirmation.catFriendly" class="green check circle icon">
-        </i>
-        <i ng-if="!selectedUser.confirmation.catFriendly" class="red remove circle icon">
-        </i>
-      </div>
-
-      <div class="field">
-        <strong> Smoking Friendly </strong>
-        <i ng-if="selectedUser.confirmation.smokingFriendly" class="green check circle icon">
-        </i>
-        <i ng-if="!selectedUser.confirmation.smokingFriendly" class="red remove circle icon">
-        </i>
-      </div>
-
-      <div class="field">
-        <label> Hosting Notes </label>
-        <textarea ng-model="selectedUser.confirmation.hostNotes"></textarea>
-      </div>
-
-      <div class="ui divider"></div>
-
-      <div class="ui header">
+      <!-- <div class="ui header">
         Travel
       </div>
 
@@ -353,7 +291,7 @@
       <div class="field">
         <label> Receipt </label>
         <input type="url" ng-model="selectedUser.confirmation.receipt" />
-      </div>
+      </div> -->
 
       <div class="field">
         <label> Additional Notes </label>
