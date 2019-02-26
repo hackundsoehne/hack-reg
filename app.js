@@ -25,6 +25,12 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+// set file size limit for PDF uploads
+app.use(bodyParser({limit: '10mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+
 app.use(bodyParser.json());
 
 app.use(methodOverride());

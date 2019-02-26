@@ -1,5 +1,5 @@
 TODO: 
- - Implement File upload for CV.
+ - Implement File upload for CV --> what the easiest way? 
  - Change Header files and logo in client/assents/images
  - Adjust docker-compose.yml
     - Secret 
