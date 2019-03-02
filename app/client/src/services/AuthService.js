@@ -87,6 +87,13 @@ angular.module('reg')
           });
       };
 
+      authService.sendConfirmationEmail = function(onSuccess, onFailure){
+        return $http
+          .post('/auth/confirm', {
+            id: Session.getUserId()
+          });
+      };
+
       authService.resendVerificationEmail = function(onSuccess, onFailure){
         return $http
           .post('/auth/verify/resend', {

@@ -57,12 +57,18 @@ angular.module('reg')
           .updateConfirmation(user._id, confirmation)
           .then(response => {
             swal("Woo!", "You're confirmed!", "success").then(value => {
+              sendConfirmation();
               $state.go("app.dashboard");
             });
           }, response => {
             swal("Uh oh!", "Something went wrong.", "error");
           });
       }
+
+      $scope.sendConfirmation = function(){
+        AuthService
+          .sendConfirmationEmail();
+      };
 
       function _setupForm(){
         // Semantic-UI form validation
