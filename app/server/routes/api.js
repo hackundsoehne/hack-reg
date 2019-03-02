@@ -1,5 +1,6 @@
 var UserController = require('../controllers/UserController');
 var SettingsController = require('../controllers/SettingsController');
+var Mailer = require('../services/email')
 
 var request = require('request');
 fs = require('fs');
@@ -64,6 +65,46 @@ module.exports = function(router) {
         message: 'Token does not match user id.'
       });
     });
+  }
+
+  function admitResponse(req, res, user){
+    return function(err, data){
+      if (err){
+        // SLACK ALERT!
+        if (process.env.NODE_ENV === 'production'){
+          request
+            .post(process.env.SLACK_HOOK,
+              {
+                form: {
+                  payload: JSON.stringify({
+                    "text":
+                    "``` \n" +
+                    "Request: \n " +
+                    req.method + ' ' + req.url +
+                    "\n ------------------------------------ \n" +
+                    "Body: \n " +
+                    JSON.stringify(req.body, null, 2) +
+                    "\n ------------------------------------ \n" +
+                    "\nError:\n" +
+                    JSON.stringify(err, null, 2) +
+                    "``` \n"
+                  })
+                }
+              },
+              function (error, response, body) {
+                return res.status(500).send({
+                  message: "Your error has been recorded, we'll get right on it!"
+                });
+              }
+            );
+        } else {
+          return res.status(500).send(err);
+        }
+      } else {
+        Mailer.sendAdmissionEmail(user.profile.email);
+        return res.json(data);
+      }
+    };
   }
 
   /**
@@ -292,7 +333,7 @@ module.exports = function(router) {
     // Accept the hacker. Admin only
     var id = req.params.id;
     var user = req.user;
-    UserController.admitUser(id, user, defaultResponse(req, res));
+    UserController.admitUser(id, user, admitResponse(req, res, user))
   });
 
   /**

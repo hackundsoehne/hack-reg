@@ -78,6 +78,37 @@ function sendOne(templateName, options, data, callback) {
   });
 }
 
+controller.sendAdmissionEmail = function(email, callback) {
+
+  var options = {
+    to: email,
+    subject: "["+HACKATHON_NAME+"] - You've been accepted for Hacktival 2019!"
+  };
+
+  var locals = {
+    rootUrl: ROOT_URL
+  };
+
+  /**
+   * Eamil-verify takes a few template values:
+   * {
+   *   verifyUrl: the url that the user must visit to verify their account
+   * }
+   */
+  sendOne('email-admit', options, locals, function(err, info){
+    if (err){
+      console.log(err);
+    }
+    if (info){
+      console.log(info.message);
+    }
+    if (callback){
+      callback(err, info);
+    }
+  });
+
+};
+
 /**
  * Send a verification email to a user, with a verification token to enter.
  * @param  {[type]}   email    [description]
