@@ -67,7 +67,7 @@ module.exports = function(router) {
     });
   }
 
-  function admitResponse(req, res, user){
+  function admitResponse(req, res, userId){
     return function(err, data){
       if (err){
         // SLACK ALERT!
@@ -101,7 +101,15 @@ module.exports = function(router) {
           return res.status(500).send(err);
         }
       } else {
-        Mailer.sendAdmissionEmail(user.profile.email);
+        // Send an email that the admission was successul - Hacky but works
+        UserController.getById(userId, function(err, user) {
+          if (err) {
+            return res.status(500).send(err);
+          }
+          else {
+            Mailer.sendAdmissionEmail(user.email);
+          }
+        } )
         return res.json(data);
       }
     };
@@ -331,9 +339,9 @@ module.exports = function(router) {
    */
   router.post('/users/:id/admit', isAdmin, function(req, res){
     // Accept the hacker. Admin only
-    var id = req.params.id;
+    let id = req.params.id;
     var user = req.user;
-    UserController.admitUser(id, user, admitResponse(req, res, user))
+    UserController.admitUser(id, user, admitResponse(req, res, req.params.id))
   });
 
   /**
