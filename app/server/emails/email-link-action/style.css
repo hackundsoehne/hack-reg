@@ -32,6 +32,10 @@ body, #bodyTable{
   /*@editable*/ background-color:#FFF;
 }
 
+a {
+  padding: 2px;
+}
+
 /**
 * @tab Page
 * @section background style
