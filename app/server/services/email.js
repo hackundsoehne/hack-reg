@@ -167,7 +167,7 @@ controller.sendConfirmationEmail = function(email, callback) {
    *   verifyUrl: the url that the user must visit to verify their account
    * }
    */
-  sendOne('email-confirm', options, locals, function(err, info){
+  sendOne('email-confirm', options, function(err, info){
     if (err){
       console.log(err);
     }
