@@ -17,6 +17,7 @@ angular.module('reg')
         ADMITTED_AND_CANNOT_CONFIRM: 'Although you were accepted, you did not complete your confirmation in time.\nUnfortunately, this means that you will not be able to attend the event, as we must begin to accept other applicants on the waitlist.\nWe hope to see you again next year!',
         CONFIRMED_NOT_PAST_TITLE: 'You can edit your confirmation information until [CONFIRM_DEADLINE]',
         DECLINED: 'We\'re sorry to hear that you won\'t be able to make it to Hacktival 2019! :(\nMaybe next time! We hope you see you again soon.',
+        REJECTED: 'We\'re sorry, but we couldn\'t accept everyone, even if we wanted to. We hope you\'re not too sad and are looking forward to seeing you at one of our other events!',
     })
     .constant('TEAM',{
         NO_TEAM_REG_CLOSED: 'Unfortunately, it\'s too late to enter application review with a team.\nHowever, you can still form teams on your own before or during the event!',

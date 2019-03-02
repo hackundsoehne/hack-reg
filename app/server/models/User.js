@@ -145,6 +145,11 @@ var status = {
     required: true,
     default: false,
   },
+  rejected: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
   checkedIn: {
     type: Boolean,
     required: true,
@@ -371,6 +376,10 @@ schema.virtual('status.name').get(function(){
 
   if (this.status.declined) {
     return "declined";
+  }
+  
+  if (this.status.rejected) {
+    return "rejected";
   }
 
   if (this.status.confirmed) {

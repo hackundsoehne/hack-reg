@@ -173,6 +173,70 @@ angular.module('reg')
         });
       };
 
+      $scope.rejectUser = function($event, user, index) {
+        $event.stopPropagation();
+
+        console.log(user);
+
+        swal({
+          buttons: {
+            cancel: {
+              text: "Cancel",
+              value: null,
+              visible: true
+            },
+            accept: {
+              className: "danger-button",
+              closeModal: false,
+              text: "Yes, reject them",
+              value: true,
+              visible: true
+            }
+          },
+          dangerMode: true,
+          icon: "warning",
+          text: "You are about to reject " + user.profile.name + "!",
+          title: "Whoa, wait a minute!"
+        }).then(value => {
+          if (!value) {
+            return;
+          }
+
+          swal({
+            buttons: {
+              cancel: {
+                text: "Cancel",
+                value: null,
+                visible: true
+              },
+              yes: {
+                className: "danger-button",
+                closeModal: false,
+                text: "Yes, reject this user",
+                value: true,
+                visible: true
+              }
+            },
+            dangerMode: true,
+            title: "Are you sure?",
+            text: "Your account will be logged as having rejected this user. " +
+              "Remember, this power is a privilege.",
+            icon: "warning"
+          }).then(value => {
+            if (!value) {
+              return;
+            }
+
+            UserService
+              .rejectUser(user._id)
+              .then(response => {
+                $scope.users[index] = response.data;
+                swal("Accepted", response.data.profile.name + ' has been rejected.', "success");
+              });
+          });
+        });
+      }
+
       $scope.toggleAdmin = function($event, user, index) {
         $event.stopPropagation();
 

@@ -115,6 +115,29 @@ module.exports = function(router) {
     };
   }
 
+  function rejectResponse(req, res, userId){
+    return function(err, data){
+      if (err){
+        if (process.env.NODE_ENV === 'production'){
+          // nothing
+        } else {
+          return res.status(500).send(err);
+        }
+      } else {
+        // Send an email that the admission was successul - Hacky but works
+        UserController.getById(userId, function(err, user) {
+          if (err) {
+            return res.status(500).send(err);
+          }
+          else {
+            Mailer.sendRejectionEmail(user.email);
+          }
+        } )
+        return res.json(data);
+      }
+    };
+  }
+
   /**
    * Default response to send an error and the data.
    * @param  {[type]} res [description]
@@ -342,6 +365,18 @@ module.exports = function(router) {
     let id = req.params.id;
     var user = req.user;
     UserController.admitUser(id, user, admitResponse(req, res, req.params.id))
+  });
+
+  /**
+   * Reject a user. ADMIN ONLY, DUH
+   *
+   * Also attaches the user who did the admitting, for liabaility.
+   */
+  router.post('/users/:id/reject', isAdmin, function(req, res){
+    // Reject the hacker. Admin only
+    let id = req.params.id;
+    var user = req.user;
+    UserController.rejectUser(id, user, rejectResponse(req, res, req.params.id))
   });
 
   /**

@@ -94,7 +94,7 @@
             <th>Name</th>
             <th>E-mail address</th>
             <th>School</th>
-            <th>V/S/A/C</th>
+            <th>V/S/A/C/R</th>
             <th>$</th>
             <th></th>
             <th></th>
@@ -164,6 +164,11 @@
                 ng-if="user.status.admitted && user.status.declined"
                 class="red remove circle icon">
               </i>
+               <i
+                ng-if="user.status.rejected"
+                class="red remove circle icon">
+              </i>
+
 
             </td>
 
@@ -197,6 +202,12 @@
                 class="accept ui circular mini basic green icon button"
                 ng-click="acceptUser($event, user, $index)">
                 <i class="add user icon"></i>
+              </button>
+
+              <button
+                class="accept ui circular mini basic red icon button"
+                ng-click="rejectUser($event, user, $index)">
+                <i class="red remove user icon"></i>
               </button>
 
               <button

@@ -669,6 +669,34 @@ UserController.admitUser = function(id, user, callback){
 /**
  * [ADMIN ONLY]
  *
+ * Reject a user.
+ * @param  {String}   userId   User id of the admit
+ * @param  {String}   user     User doing the admitting
+ * @param  {Function} callback args(err, user)
+ */
+UserController.rejectUser = function(id, user, callback){
+  Settings.getRegistrationTimes(function(err, times){
+    User
+      .findOneAndUpdate({
+        _id: id,
+        verified: true
+      },{
+        $set: {
+          'status.rejected': true,
+          'status.admitted': false,
+          'status.admittedBy': user.email,
+          'status.confirmBy': times.timeConfirm
+        }
+      }, {
+        new: true
+      },
+      callback);
+  });
+};
+
+/**
+ * [ADMIN ONLY]
+ *
  * Check in a user.
  * @param  {String}   userId   User id of the user getting checked in.
  * @param  {String}   user     User checking in this person.
