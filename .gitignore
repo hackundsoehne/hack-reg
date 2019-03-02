@@ -3,6 +3,9 @@ db/
 node_modules/
 semantic/
 
+# The uploads folder
+uploads/
+
 # Output
 app/client/build/
 
