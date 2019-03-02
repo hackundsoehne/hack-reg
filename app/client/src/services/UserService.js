@@ -34,10 +34,8 @@ angular.module('reg')
         );
       },
 
-      uploadFile: function(id, file) {
-        return $http.post(base + id + '/file', {
-          file: file
-        }, {
+      uploadFile: function(id, body) {
+        return $http.post(base + id + '/file', body, {
           'encoding' : null 
         });
       },

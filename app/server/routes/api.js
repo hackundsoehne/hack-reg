@@ -185,10 +185,10 @@ module.exports = function(router) {
       }
 
       // Remove whitespaces and use full name as id
-      var fileid = user.profile.name.replace(/\s/g, "").toLowerCase();
 
       // Write to project root
-      filePath = path.join(__dirname, "../../../", '/uploads/' + fileid + '.pdf');
+      var name = req.body.name.replace(/\s/g, "").toLowerCase();
+      var filePath = path.join(__dirname, "../../../", '/uploads/' + name + '.pdf');
       try {
         var pdfBase64 = req.body.file.split(';base64,').pop()
         fs.writeFileSync(filePath, pdfBase64, {'encoding' : 'base64'});

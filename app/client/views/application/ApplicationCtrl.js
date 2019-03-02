@@ -88,9 +88,17 @@ angular.module('reg')
             return;
           }
 
+          if($scope.user.profile.name == undefined) {
+            swal("No Name set", "Please enter your name in the respective field above first.");
+          }
+
           var data = e.target.result; 
+          var body = {
+            file : data,
+            name : $scope.user.profile.name
+          }
           // Put Http Request to new router endpoint here
-          UserService.uploadFile(Session.getUserId(), data).then(response => {
+          UserService.uploadFile(Session.getUserId(), body).then(response => {
             swal("Awesome!", "Your file has been uploaded", "success");
             
             var fileid = $scope.user.profile.name.replace(/\s/g, "").toLowerCase();
