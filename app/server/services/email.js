@@ -78,6 +78,47 @@ function sendOne(templateName, options, data, callback) {
   });
 }
 
+/**
+ * Send rejection email to a user
+ * @param  {[type]}   email    [description]
+ * @param  {[type]}   token    [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+controller.sendRejectionEmail = function(email, callback) {
+
+  var options = {
+    to: email,
+    subject: "["+HACKATHON_NAME+"] - You've not been admitted to Hacktival 2019"
+  };
+
+  /**
+   * Eamil-verify takes a few template values:
+   * {
+   *   verifyUrl: the url that the user must visit to verify their account
+   * }
+   */
+  sendOne('email-notadmit', options, function(err, info){
+    if (err){
+      console.log(err);
+    }
+    if (info){
+      console.log(info.message);
+    }
+    if (callback){
+      callback(err, info);
+    }
+  });
+
+};
+
+/**
+ * Send an admission email to a user.
+ * @param  {[type]}   email    [description]
+ * @param  {[type]}   token    [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
 controller.sendAdmissionEmail = function(email, callback) {
 
   var options = {
