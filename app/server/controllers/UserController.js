@@ -523,14 +523,12 @@ UserController.sendVerificationEmailById = function(id, callback){
  * Send a confirmation email given a user id.
  */
 UserController.sendConfirmationEmailById = function(id, callback){
-  console.log('starting')
   User.findOne(
     {
       _id: id,
     },
     function(err, user){
       if (err || !user){
-        console.log('this error')
         return callback(err);
       }
       Mailer.sendConfirmationEmail(user.email);
