@@ -22,7 +22,7 @@ services:
      - EMAIL_USER=application@hackundsoehne.de
      - EMAIL_PASS=Hacktival2019!
      - EMAIL_PORT=465
-     - EMAIL_HEADER_IMAGE=
+     - EMAIL_HEADER_IMAGE=/assets/images/header.png
     depends_on:
      - db
     volumes_from:
