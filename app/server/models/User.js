@@ -6,6 +6,11 @@ var mongoose   = require('mongoose'),
 
 var profile = {
 
+  profileChangeCounter : {
+    type : Number,
+    default: 0,
+  },
+
   // Basic info
   name: {
     type: String,
@@ -81,6 +86,13 @@ var profile = {
 
 // Only after confirmed
 var confirmation = {
+
+  confirmationChangeCounter : {
+    type : Number,
+    default: 0,
+  },
+
+
   dietaryRestrictions: [String],
   shirtSize: {
     type: String,

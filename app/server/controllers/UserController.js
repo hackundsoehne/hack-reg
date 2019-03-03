@@ -296,6 +296,9 @@ UserController.updateProfileById = function (id, profile, callback){
       }
     });
 
+    // Increment Change counter everytime profile is updated    
+    profile.profileChangeCounter = profile.profileChangeCounter + 1
+
     User.findOneAndUpdate({
       _id: id,
       verified: true
@@ -337,6 +340,9 @@ UserController.updateConfirmationById = function (id, confirmation, callback){
         message: "You've missed the confirmation deadline."
       });
     }
+
+    // Increment counter everytime the confirmation is updated
+    confirmation.confirmationChangeCounter = confirmation.confirmationChangeCounter + 1;
 
     // You can only confirm acceptance if you're admitted and haven't declined.
     User.findOneAndUpdate({
@@ -531,7 +537,10 @@ UserController.sendConfirmationEmailById = function(id, callback){
       if (err || !user){
         return callback(err);
       }
-      Mailer.sendConfirmationEmail(user.email);
+      // Only send e-mail on first confirmation update - not for every change
+      if (user.confirmation.confirmationChangeCounter == 1) {
+        Mailer.sendConfirmationEmail(user.email);
+      }
       return callback(err, user);
   });
 };
@@ -548,7 +557,10 @@ UserController.sendWaitlistEmailById = function(id, callback){
       if (err || !user){
         return callback(err);
       }
-      Mailer.sendWaitlistEmail(user.email);
+      // Only send e-mail on first application update - not for every change
+      if (user.profile.profileChangeCounter == 1) {
+        Mailer.sendWaitlistEmail(user.email);
+      }
       return callback(err, user);
   });
 };
