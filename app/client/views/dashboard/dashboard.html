@@ -60,22 +60,27 @@
         </div>
 
         <div
-          ng-class="settings.timeClose"
           ng-if="!dashState('admittedAndCanConfirm') || !dashState('admittedAndCannotConfirm') || !dashState('confirmed') || !dashState('declined')">
+          <p>
           <strong>
             Registration Deadline:
           </strong>
           {{ timeClose }}
+          </p>
         </div>
 
         <div
           ng-class="settings.timeConfirm"
           ng-if="dashState('admittedAndCanConfirm') || dashState('admittedAndCannotConfirm') || dashState('confirmed') || dashState('declined')">
+          <p>
           <strong>
             Confirmation Deadline:
           </strong>
           {{ timeConfirm }}
+          </p>
         </div>
+
+        </br>
 
         <div
           ng-if="dashState('openAndIncomplete')"
@@ -149,13 +154,13 @@
             ng-bind-html="waitlistText">
           </div>
 
-          <div class="ui purple button"
+          <div class="ui grey button"
                ui-sref="app.application">
             View your application
           </div>
 
           <div
-            class="ui red button"
+            class="ui grey button"
             ng-show="user.teamCode"
             ui-sref="app.team">
             View your Team
@@ -183,12 +188,14 @@
             </h4>
           </div>
 
-          <div class="ui purple button"
-               ui-sref="app.confirmation">
+          <div class="ui button"
+               ui-sref="app.confirmation"
+               style="background-color: #0fbc00; color: white"
+               >
             Confirm your spot
           </div>
 
-          <div class="ui red button"
+          <div class="ui grey button"
                ng-click="declineAdmission()">
             Sorry, I can't make it
           </div>
@@ -228,12 +235,12 @@
             ng-bind-html="confirmationText">
           </div>
 
-          <div class="ui purple button"
+          <div class="ui grey button"
                ui-sref="app.confirmation">
             {{pastConfirmation ? 'View' : 'Edit'}} your confirmation information
           </div>
 
-          <div class="ui red button"
+          <div class="ui grey button"
                ng-click="declineAdmission()">
             Sorry, I can't make it
           </div>
