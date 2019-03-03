@@ -13,7 +13,8 @@ angular.module('reg')
     'settings',
     'Session',
     'UserService',
-    function($scope, $rootScope, $state, $http, currentUser, settings, Session, UserService) {
+    'AuthService',
+    function($scope, $rootScope, $state, $http, currentUser, settings, Session, UserService, AuthService) {
 
       // Set up the user
       $scope.user = currentUser.data;
@@ -118,6 +119,8 @@ angular.module('reg')
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
           .then(response => {
+            // Send Waitlist Email
+            AuthService.sendWaitlistEmail();
             swal("Awesome!", "Your application has been saved.", "success").then(value => {
               $state.go("app.dashboard");
             });

@@ -87,6 +87,13 @@ angular.module('reg')
           });
       };
 
+      authService.sendWaitlistEmail = function(onSuccess, onFailure){
+        return $http
+          .post('/auth/waitlist', {
+            id: Session.getUserId()
+          });
+      };
+
       authService.sendConfirmationEmail = function(onSuccess, onFailure){
         return $http
           .post('/auth/confirm', {
