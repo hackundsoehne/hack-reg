@@ -160,6 +160,28 @@ module.exports = function(router){
   });
 
   /**
+   * Send a waitlist email to this user on success.
+   *
+   * body {
+   *   id: user id
+   * }
+   */
+  router.post('/waitlist',
+    function(req, res, next){
+      var id = req.body.id;
+      if (id){
+        UserController.sendWaitlistEmailById(id, function(err, user){
+          if (err || !user){
+            return res.status(400).send();
+          }
+          return res.status(200).send();
+        });
+      } else {
+        return res.status(400).send();
+      }
+  });
+
+  /**
    * Verify a user with a given token.
    */
    router.get('/verify/:token',

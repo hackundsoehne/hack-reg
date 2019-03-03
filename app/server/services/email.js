@@ -169,7 +169,7 @@ controller.sendVerificationEmail = function(email, token, callback) {
   };
 
   /**
-   * Eamil-verify takes a few template values:
+   * Email-verify takes a few template values:
    * {
    *   verifyUrl: the url that the user must visit to verify their account
    * }
@@ -203,12 +203,46 @@ controller.sendConfirmationEmail = function(email, callback) {
   };
 
   /**
-   * Eamil-verify takes a few template values:
+   * Email-verify takes a few template values:
    * {
    *   verifyUrl: the url that the user must visit to verify their account
    * }
    */
   sendOne('email-confirm', options, function(err, info){
+    if (err){
+      console.log(err);
+    }
+    if (info){
+      console.log(info.message);
+    }
+    if (callback){
+      callback(err, info);
+    }
+  });
+
+};
+
+/**
+ * Send a confirmation email to a user.
+ * @param  {[type]}   email    [description]
+ * @param  {[type]}   token    [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+controller.sendWaitlistEmail = function(email, callback) {
+
+  var options = {
+    to: email,
+    subject: "["+HACKATHON_NAME+"] - We have received your application changes, you are on our waitlist!"
+  };
+
+  /**
+   * Email-verify takes a few template values:
+   * {
+   *   verifyUrl: the url that the user must visit to verify their account
+   * }
+   */
+  sendOne('email-waitlist', options, function(err, info){
     if (err){
       console.log(err);
     }

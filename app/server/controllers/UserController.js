@@ -537,6 +537,23 @@ UserController.sendConfirmationEmailById = function(id, callback){
 };
 
 /**
+ * Send a waitlist email given a user id.
+ */
+UserController.sendWaitlistEmailById = function(id, callback){
+  User.findOne(
+    {
+      _id: id,
+    },
+    function(err, user){
+      if (err || !user){
+        return callback(err);
+      }
+      Mailer.sendWaitlistEmail(user.email);
+      return callback(err, user);
+  });
+};
+
+/**
  * Password reset email
  * @param  {[type]}   email    [description]
  * @param  {Function} callback [description]
