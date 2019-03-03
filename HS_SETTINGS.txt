@@ -1,11 +1,11 @@
 TODO: 
- - Implement File upload for CV --> what the easiest way? 
- - Change Header files and logo in client/assents/images
- - Adjust docker-compose.yml
-    - Secret 
-    - root url
-    - 
+- Docker-compose
+    - Put a JWT secret 
+    - Put a new AdminPassword
+    - Turn to Production mode
 
+
+## TEXTE für Dashboard -> Set in Admin interface
 
 Waitlist text
 
@@ -17,20 +17,13 @@ You will receive an Email in the coming weeks, informing you whether you have be
 
 Acceptance text
 
-Hey there,
-we are happy to inform you that we have accepted your application for the Hacktival 2019 Hackathon!
-We ask you to visit our registration website to confirm that you will be coming to the event.
-If you were to find out later, that in fact you cannot attend the event due to any complications, an Email informing us would be much appreciated!
-You will find most details regarding Hacktival on our website https://hacktival.io/.
-Also, if you are still looking for a team, you can use the 'Team' feature in our application system.
-Otherwise if there are further questions or uncertainties, send us an Email and we will be happy to help.
-The Hack & Soehne team will continue to put in effort to make this our best tech event yet.
+Yey! You've been accepted for the Hacktival 2019! Please confirm you attendance by clicking the button below and filling out the remaining details. We're looking forward to meeting you here in Karlsruhe. 
+
 
 =============================================================================================
 
 Confirmation text
-Hey there,
-we have received your confirmation for the Hacktival 2019 Hackathon!
-We will be looking forward to seeing you at our event!
 
+You admission is confirmed! We're looking forward to see you at the hackathon. 
+If you can't make it, please let us know by pressing the button below or sending an email. 
 =============================================================================================
