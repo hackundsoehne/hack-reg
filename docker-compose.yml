@@ -15,13 +15,13 @@ services:
      - PORT=3000
      - JWT_SECRET=shhhh super secret code here bro
      - ROOT_URL=http://localhost:3000
-     - ADMIN_EMAIL=vader@hackundsoehne.de
-     - ADMIN_PASS=Hacktival2019!
-     - EMAIL_CONTACT=Hackathon Application <application@hackundsoehne.de>
-     - EMAIL_HOST=smtp.zoho.com
-     - EMAIL_USER=application@hackundsoehne.de
-     - EMAIL_PASS=Hacktival2019!
-     - EMAIL_PORT=465
+     - ADMIN_EMAIL=
+     - ADMIN_PASS=
+     - EMAIL_CONTACT=
+     - EMAIL_HOST=
+     - EMAIL_USER=
+     - EMAIL_PASS=
+     - EMAIL_PORT=
      - EMAIL_HEADER_IMAGE=/assets/images/header.png
     depends_on:
      - db
