@@ -14,4 +14,6 @@ RUN npm install
 # Build Using Gulp
 RUN gulp build
 
+EXPOSE 3000
+
 CMD node app.js
