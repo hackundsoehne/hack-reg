@@ -32,6 +32,14 @@ ENV EMAIL_HOST = smtp.bar.com
 
 ENV EMAIL_USER = foo@bar.com
 
+ENV EMAIL_ADDRESS = foo@bar.com
+
+ENV HACKATHON_NAME = Hacktival
+
+ENV TWITTER_HANDLE = @hackundsoehne
+
+ENV FACEBOOK_HANDLE = hackundsoehne
+
 ENV EMAIL_PASS = abc123changeme
 
 ENV EMAIL_PORT = 465
