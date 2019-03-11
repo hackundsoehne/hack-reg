@@ -33,7 +33,6 @@ var profile = {
 
   isStudent: {
     type: Boolean,
-    required: true,
     default: false,
   },
 
@@ -369,7 +368,7 @@ schema.statics.validateProfile = function(profile, cb){
   return cb(!(
     profile.name.length > 0 && 
     ( 
-    (profile.isStudent && profile.school.length >   0) ||
+    (profile.isStudent && profile.school.length > 0) ||
     (!profile.isStudent && profile.work.length > 0)
     ) 
     &&
