@@ -14,17 +14,17 @@ RUN npm install
 # Build Using Gulp
 RUN gulp build
 
-ENV DATABASE mongodb://localhost
+ENV DATABASE = mongodb://localhost
 
-ENV PORT 3000
+ENV PORT = 3000
 
-ENV JWT_SECRET secret
+ENV JWT_SECRET = secret
 
-ENV ROOT_URL http://localhost:3000
+ENV ROOT_URL = http://localhost:3000
 
-ENV ADMIN_EMAIL foo@bar.com
+ENV ADMIN_EMAIL = foo@bar.com
 
-ENV ADMIN_PASS secret
+ENV ADMIN_PASS = secret
 
 ENV EMAIL_CONTACT = FooBar <foo@bar.com>
 
