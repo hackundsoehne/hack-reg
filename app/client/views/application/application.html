@@ -136,7 +136,7 @@
             <label> Skill Sheet </label>
           <input type="file" id="file" name="file"/>
           <button class="ui red button" ng-click="uploadFile()" style="margin-top: 12px">Upload File</button>
-          <p>Max. 10 MB. You're files are safe and sound on our own storage space and will not be shared with any partner or company.</p>
+          <p style="margin-top: 12px">Max. 10 MB. Your files are safe and sound on our own storage space and will not be shared with any partner or company.</p>
           </div>
 
           <div class="field" ng-hide="isMitStudent" style="margin-top: 48px">
@@ -155,6 +155,12 @@
             <div class="ui checkbox">
               <input type="checkbox" id="adult" ng-model="user.profile.adult">
               <label for="adult">I am 18 or older.</label>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" id="dataPrivacy" ng-model="user.profile.dataPrivacy">
+              <label for="dataPrivacy">I agree to the <a href="https://hacktival.io/dataprivacy">data privacy policy</a></label>
             </div>
           </div>
 

@@ -24,6 +24,13 @@ var profile = {
     default: false,
   },
 
+  dataPrivacy: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+
+
   isStudent: {
     type: Boolean,
     required: true,
@@ -368,6 +375,7 @@ schema.statics.validateProfile = function(profile, cb){
     &&
     profile.description.length > 0 &&
     profile.adult && 
+    profile.dataPrivacy &&
     ['M', 'F', 'O', 'N'].indexOf(profile.gender) > -1
     ));
 };
