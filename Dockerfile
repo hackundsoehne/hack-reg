@@ -46,6 +46,12 @@ ENV EMAIL_PORT = 465
 
 ENV EMAIL_HEADER = image.png
 
+ENV NODE_ENV = dev
+
+ENV TEAM_MAX_SIZE = 4
+
+ENV SLACK_HOOK = https://hooks.slack.com/services/yourapikey
+
 EXPOSE 3000
 
 CMD node app.js
