@@ -5,6 +5,10 @@ WORKDIR /usr/app/src
 # Load Source
 COPY . .
 
+RUN mkdir uploads
+
+VOLUME /usr/app/src/uploads
+
 # Install Gulp
 RUN npm install -g gulp
 
