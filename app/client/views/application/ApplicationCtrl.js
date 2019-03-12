@@ -167,15 +167,6 @@ angular.module('reg')
                 }
               ]
             },
-            school: {
-              identifier: 'school',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter your school name.'
-                }
-              ]
-            },
             experience: {
               identifier: 'experience',
               rules: [
