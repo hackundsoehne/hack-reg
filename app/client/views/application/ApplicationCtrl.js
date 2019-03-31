@@ -90,7 +90,7 @@ angular.module('reg')
           }
 
           if($scope.user.profile.name == undefined) {
-            swal("No Name set", "Please enter your name in the respective field above first.");
+            swal("No Name set", "Please enter your name in the respective field above first.", 'error');
           }
 
           var data = e.target.result; 
