@@ -80,6 +80,7 @@
         </div>
 
         <div class="actions">
+          <div ng-if="selectedUser.hasPDF" ng-click="openPDF(selectedUser)" class="ui green button">PDF</div>
           <div class="ui positive right labeled icon button">
             Nothing
             <i class="checkmark icon"></i>

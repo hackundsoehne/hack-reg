@@ -11,6 +11,7 @@ angular.module('reg')
 
       $scope.pages = [];
       $scope.users = [];
+      $scope.PDF = undefined;
 
       // Semantic-UI moves modal content into a dimmer at the top level.
       // While this is usually nice, it means that with our routing will generate
@@ -19,6 +20,7 @@ angular.module('reg')
       $('.ui.dimmer').remove();
       // Populate the size of the modal for when it appears, with an arbitrary user.
       $scope.selectedUser = {};
+      $scope.selectedUser.hasPDF = false; // set default to false
       $scope.selectedUser.sections = generateSections({status: '', confirmation: {
         dietaryRestrictions: []
       }, profile: ''});
@@ -108,6 +110,53 @@ angular.module('reg')
             });
         }
       };
+
+      // A check functions to see if user has a PDF 
+      $scope.checkPDF = function(user) {
+        if ($scope.hasPDF == true) {
+          return true;
+        }
+        else {
+          var name = user.profile.name.replace(/\s/g, "").toLowerCase();
+          UserService.hasFile(name).then(response => {
+            $scope.selectedUser.hasPDF = true;
+            return true;
+
+          }, error => {
+            $scope.hasPDF = false;
+            return false;
+          })
+        }
+      }
+
+      // retrieve and open the pdf in a new PDF
+      $scope.openPDF = function(user) {
+        if ($scope.PDF == undefined) {
+      var name = user.profile.name.replace(/\s/g, "").toLowerCase();
+        UserService.getFile(name).then(response => {
+          if (response.status == 200) {
+            $scope.hasPDF = true;
+            $scope.PDF = response.data;
+
+            // open in new window
+            var newBlob = new Blob([response.data], {type : "application/pdf"});
+            const data = window.URL.createObjectURL(newBlob);
+            window.open(data, '_blank');
+            
+          }
+          else {
+            // If button is clicked although no file exists -- shouldn't be possible because of ng-if
+            swal("Doesn't exist", "There is no PDF file for this user", "error");
+          }
+        })
+        }
+        if ($scope.hasPDF && $scope.PDF != undefined) {
+
+        var newBlob = new Blob([$scope.PDF], {type : "application/pdf"});
+        const data = window.URL.createObjectURL(newBlob);
+        window.open(data, '_blank');
+            
+      }
 
       $scope.acceptUser = function($event, user, index) {
         $event.stopPropagation();
@@ -302,6 +351,7 @@ angular.module('reg')
 
       function selectUser(user){
         $scope.selectedUser = user;
+        $scope.selectedUser.hasPDF = $scope.checkPDF(user); // request if user has PDF to update status
         $scope.selectedUser.sections = generateSections(user);
         $('.long.user.modal')
           .modal('show');
