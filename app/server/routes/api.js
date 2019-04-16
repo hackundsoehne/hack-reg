@@ -277,59 +277,6 @@ module.exports = function(router) {
     })
   });
 
-   /**
-    * Get a users uploaded file if it exists
-   */
-  router.get('/users/:name/file', isAdmin, function(req, res){
-    var name = req.params.name;
-    // Get user profile based on token
-      var filePath = path.join(__dirname, "../../../", '/uploads/' + name + '.pdf');
-
-      try {
-       var file = fs.createReadStream(filePath)
-       res.setHeader('Content-type', 'application/pdf');
-       res.status(200);
-       file.pipe(res);
-       
-      } catch (error) {
-        res.status(400).send({
-          message : "no file has been uploaded"
-        })
-      }
-
-    });
-
-   /**
-    * 
-    * Check whether user with specified name has an uploaded file 
-   */
-  router.get('/users/:name/hasfile', isAdmin, function(req, res){
-    var name = req.params.name;
-    // Get user profile based on token
-      var filePath = path.join(__dirname, "../../../", '/uploads/' + name + '.pdf');
-
-      fs.stat(filePath, function(err, stat) {
-        if(err == null) {
-          res.status(200);
-          res.send({
-            message : 'file'
-          });
- 
-        } else if(err.code === 'ENOENT') {
-            res.status(400).send({
-              message : "no file has been uploaded"
-            })
-        } else {
-            res.status(400).send({
-              message : "some other error"
-            })
-
-        }
-    });
-    });
-
-
-
   /**
    * [OWNER/ADMIN]
    *

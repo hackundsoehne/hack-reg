@@ -34,17 +34,6 @@ angular.module('reg')
         );
       },
 
-      getFile: function(id) {
-        return $http.get(base + id + '/file', {
-          'responseType' : 'arraybuffer', 
-          'encoding' : 'base64'
-        });
-      },
-
-      hasFile: function(id) {
-        return $http.get(base + id + '/hasfile');
-      },
-
       uploadFile: function(id, body) {
         return $http.post(base + id + '/file', body, {
           'encoding' : null 
