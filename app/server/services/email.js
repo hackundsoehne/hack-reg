@@ -123,7 +123,7 @@ controller.sendAdmissionEmail = function(email, callback) {
 
   var options = {
     to: email,
-    subject: "["+HACKATHON_NAME+"] - You've been accepted for Hacktival 2019!"
+    subject: "[ACTION REQUIRED] ["+HACKATHON_NAME+"] - You've been accepted for Hacktival 2019!"
   };
 
   var locals = {
