@@ -49,6 +49,31 @@ angular.module('reg')
           });
       });
 
+      /**
+       * Opens a new window with a line-break seperated list of users with 
+       *  email, verified, submitted, admitted, confirmed
+       *  Data can be used as .CSV 
+       */
+      $scope.getAllMails = function() {
+        UserService.getAllUsers().then(response => {
+          users = response.data;
+
+          file = "email,verified,submitted,admitted,confirmed\n";
+
+          for(user of users) {
+            if (user.verified || true)
+              file += user.email + ',' + user.verified +',' + user.status.completedProfile + ',' + user.status.admitted + ',' + user.status.confirmed + '\n';
+          }
+
+          // open in new window
+          var newBlob = new Blob([file], {type : "text/csv"});
+          const data = window.URL.createObjectURL(newBlob);
+          window.open(data, '_blank');
+        })
+      }
+
+
+
       $scope.goToPage = function(page){
         $state.go('app.admin.users', {
           page: page,
