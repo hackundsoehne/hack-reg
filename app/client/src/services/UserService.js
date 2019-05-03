@@ -34,6 +34,10 @@ angular.module('reg')
         );
       },
 
+      getAllUsers: function(){
+        return $http.get(users);
+      },
+
       uploadFile: function(id, body) {
         return $http.post(base + id + '/file', body, {
           'encoding' : null 
