@@ -18,7 +18,7 @@
             "description": "Credentials for the admin user created at app initialization",
             "value": "vader@hackundsoehne.de"
         },
-        "ADMIN_PASS": "Hacktival2019!",
+        "ADMIN_PASS": "Hacktival2020!",
         "EMAIL_ADDRESS": {
             "description": "The email address that is included in the 'email us' link at the bottom of emails.",
             "value": "application@hackundsoehne.de"

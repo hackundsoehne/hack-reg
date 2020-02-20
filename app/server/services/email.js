@@ -89,7 +89,7 @@ controller.sendRejectionEmail = function(email, callback) {
 
   var options = {
     to: email,
-    subject: "["+HACKATHON_NAME+"] - You've not been admitted to Hacktival 2019"
+    subject: "["+HACKATHON_NAME+"] - You've not been admitted to Hacktival 2020"
   };
 
   /**
@@ -123,7 +123,7 @@ controller.sendAdmissionEmail = function(email, callback) {
 
   var options = {
     to: email,
-    subject: "[ACTION REQUIRED] ["+HACKATHON_NAME+"] - You've been accepted for Hacktival 2019!"
+    subject: "[ACTION REQUIRED] ["+HACKATHON_NAME+"] - You've been accepted for Hacktival 2020!"
   };
 
   var locals = {
@@ -199,7 +199,7 @@ controller.sendConfirmationEmail = function(email, callback) {
 
   var options = {
     to: email,
-    subject: "["+HACKATHON_NAME+"] - We have received your confirmation for Hacktival 2019!"
+    subject: "["+HACKATHON_NAME+"] - We have received your confirmation for Hacktival 2020!"
   };
 
   /**
