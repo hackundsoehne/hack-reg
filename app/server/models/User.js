@@ -108,6 +108,7 @@ var confirmation = {
   },
   // wantsHardware: Boolean,
   // hardware: String,
+  phoneNumber: String,
 
   twitter: String,
   website: String,
@@ -128,6 +129,15 @@ var confirmation = {
 
   signaturePhotoRelease: String,
   signatureCodeOfConduct: String,
+
+  mlhCoCAgree: {
+    type: Boolean,
+    default: false,
+  },
+  mlhShareAgree: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 var status = {

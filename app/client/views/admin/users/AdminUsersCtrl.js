@@ -399,6 +399,10 @@ angular.module('reg')
             name: 'Confirmation',
             fields: [
               {
+                  name: 'Phone Number',
+                  value: user.confirmation.phoneNumber
+              },
+              {
                 name: 'Dietary Restrictions',
                 value: user.confirmation.dietaryRestrictions.join(', ')
               },{
@@ -407,6 +411,12 @@ angular.module('reg')
               },{
                 name: 'Website',
                 value: user.confirmation.website
+              },{
+                name: 'MLH CoC',
+                value: user.confirmation.mlhCoCAgree
+              },{
+                name: 'MLH Information Usage',
+                value: user.confirmation.mlhShareAgree
               }
             ]
           },

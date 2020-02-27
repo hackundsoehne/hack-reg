@@ -79,6 +79,15 @@ angular.module('reg')
                 }
               ]
             },
+            phoneNumber: {
+              identifier: 'phoneNumber',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please type your phone number.'
+                }
+              ]
+            },
             signaturePhotoRelease: {
               identifier: 'signaturePhotoRelease',
               rules: [
@@ -96,6 +105,24 @@ angular.module('reg')
                   prompt: 'Please type your digital signature.'
                 }
               ]
+            },
+            mlhCoCAgree: {
+                identifier: 'mlhCoCAgree',
+                rules: [
+                  {
+                      type: 'checked',
+                      prompt: 'You must agree to the MLH Code of Conduct.'
+                  }
+                ]
+            },
+           mlhShareAgree: {
+                identifier: 'mlhShareAgree',
+                rules: [
+                  {
+                      type: 'checked',
+                      prompt: 'You must agree to the information usage by MLH and to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy.'
+                  }
+                ]
             },
           }
         });

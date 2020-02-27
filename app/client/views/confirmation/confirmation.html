@@ -54,6 +54,19 @@
             </select>
           </div>
 
+          <div class="field">
+            <label> Phone number (required) </label>
+            <p>
+              We need this in case we need to get ahold of you! 
+            </p>
+            <input
+              type="tel"
+              name="phoneNumber"
+              placeholder="1234 56789012"
+              ng-model="user.confirmation.phoneNumber"
+              required>
+          </div>
+
           <br>
           <br>
 
@@ -73,10 +86,10 @@
 
           <div class="field">
             <label> Will you be needing travel reimbursement? </label>
-            <div class="ui checkbox">
-              <input type="checkbox" ng-model="user.confirmation.needsReimbursement">
-              <label> I will be needing travel reimbursement. </label>
-            </div>
+<div class="ui checkbox">
+  <input type="checkbox" ng-model="user.confirmation.needsReimbursement">
+  <label> I will be needing travel reimbursement. </label>
+</div>
           </div> -->
 
           <!-- <div
@@ -162,7 +175,7 @@
           <div class="divided title">Legal</div>
 
           <div class="field">
-            <label> Code of Conduct </label>
+            <label> Hacktival Code of Conduct </label>
             <p>
               <a
                 target="_blank"
@@ -182,6 +195,21 @@
                    ng-model="user.confirmation.signatureCodeOfConduct">
           </div>
 
+          <div class="field">
+              <label> MLH Code of Conduct </label>
+              <div class="ui checkbox">
+                  <input type="checkbox" name="mlhCoCAgree" ng-model="user.confirmation.mlhCoCAgree">
+                  <label> I have read and agree to the <a target="_blank" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" >MLH Code of Conduct</a>. </label>
+              </div>
+          </div>
+
+          <div class="field">
+              <label> MLH Information Usage </label>
+              <div class="ui checkbox">
+                  <input type="checkbox" name="mlhShareAgree" ng-model="user.confirmation.mlhShareAgree">
+                  <label>I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the <a target="_blank" href="https://mlh.io/privacy">MLH Privacy Policy</a>. I further agree to the terms of both the <a target="_blank" href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH Contest Terms and Conditions </a> and the <a target="_blank" href="https://mlh.io/privacy">MLH Privacy Policy</a>.</label>
+              </div>
+          </div> 
           <br>
           <br>
 
