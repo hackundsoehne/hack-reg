@@ -12,3 +12,4 @@ app/client/build/
 # macOS
 .DS_Store
 .python-version
+.vscode/settings.json
