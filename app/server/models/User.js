@@ -223,12 +223,12 @@ var schema = new mongoose.Schema({
   timestamp: {
     type: Number,
     required: true,
-    default: Date.now(),
+    default: Date.now,
   },
 
   lastUpdated: {
     type: Number,
-    default: Date.now(),
+    default: Date.now,
   },
 
   teamCode: {
