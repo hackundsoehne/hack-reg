@@ -25,7 +25,7 @@
     "nodemailer": "^4.7.0",
     "nodemailer-smtp-transport": "^2.7.4",
     "request": "^2.88.0",
-    "showdown": "^1.9.0",
+    "showdown": "^1.9.1",
     "sweetalert": "^2.1.2",
     "underscore": "^1.9.1",
     "validator": "^10.10.0",
