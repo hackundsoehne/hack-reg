@@ -6,7 +6,7 @@
   "dependencies": {
     "angular": "^1.7.5",
     "angular-ui-router": "^1.0.20",
-    "async": "^2.6.1",
+    "async": "^2.6.4",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "browserify": "^16.2.3",
